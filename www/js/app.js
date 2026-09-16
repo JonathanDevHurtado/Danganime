@@ -14,6 +14,7 @@ const SITES = {
     badge: 'badge-peliculas',
     sites: [
       { name: 'Runtime', url: 'https://www.runtime.tv/es/app', desc: 'Películas y series gratis', favicon: 'favicons/runtime.png' },
+      { name: 'RepelisHD', url: 'https://repelishd.pics/', desc: 'Películas y series HD', favicon: 'favicons/repelis.png' },
       { name: 'Pluto TV', url: 'https://pluto.tv/latam/home/', desc: 'TV y películas gratis', favicon: 'favicons/pluto.png' },
       { name: 'Peelink', url: 'https://www.peelink2.com/espanol', desc: 'Películas y series', favicon: 'favicons/peelink.png' }
     ]
