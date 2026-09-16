@@ -19,14 +19,26 @@
 
 ---
 
+## Demo
+
+<p align="center">
+  <img src="screenshots/demo.gif" width="300" alt="Demo de inicio de Danganime"/>
+</p>
+
+> Inicio de la app: splash animado con sonido de bienvenida → menú → selector de sitios → navegador.
+
+---
+
 ## Capturas
 
 <p align="center">
-  <img src="screenshots/1-menu.png" width="240" alt="Menú"/>
+  <img src="screenshots/1-splash.png" width="200" alt="Splash"/>
   &nbsp;
-  <img src="screenshots/2-sites.png" width="240" alt="Sitios"/>
+  <img src="screenshots/2-menu.png" width="200" alt="Menú"/>
   &nbsp;
-  <img src="screenshots/3-browser.png" width="240" alt="Navegador"/>
+  <img src="screenshots/3-sites.png" width="200" alt="Sitios"/>
+  &nbsp;
+  <img src="screenshots/4-browser.png" width="200" alt="Navegador"/>
 </p>
 
 ---
@@ -187,6 +199,14 @@ tag `v*` y publica la release automáticamente.
 
 El script [`tools/update_filters.py`](tools/update_filters.py) regenera las listas de
 `android/app/src/main/assets/filters/` a partir de las fuentes de uBlock Origin.
+
+---
+
+## Documentación
+
+- [`DOCUMENTACION.md`](DOCUMENTACION.md) — documentación técnica completa.
+- [`docs/`](docs/) — documentación por temas (arquitectura, ad-block, fullscreen, build, troubleshooting).
+- [`logs/`](logs/) — changelog detallado por versión.
 
 ---
 
