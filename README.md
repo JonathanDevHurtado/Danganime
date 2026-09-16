@@ -26,6 +26,8 @@
 </p>
 
 > Inicio de la app: splash animado con sonido de bienvenida → menú → selector de sitios → navegador.
+>
+> 🎬 **[Ver demo con sonido (MP4)](screenshots/demo-sound.mp4)**
 
 ---
 
