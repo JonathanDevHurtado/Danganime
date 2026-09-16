@@ -23,7 +23,7 @@ const SITES = {
     badge: 'badge-manhwa',
     sites: [
       { name: 'ManhwaWeb', url: 'https://www.manhwaweb.com/', desc: 'Manhwas y novelas coreanas', favicon: 'favicons/manhwaweb.png' },
-      { name: 'ShadeManga', url: 'https://shademanga.com/reader/M2VC85', desc: 'Manhwas en línea', favicon: 'favicons/shademanga.png' },
+      { name: 'ShadeManga', url: 'https://shademanga.com/', desc: 'Manhwas en línea', favicon: 'favicons/shademanga.png' },
       { name: 'Lector Mangas', url: 'https://lector-mangas.lat/', desc: 'Manhwas y mangas', favicon: 'favicons/lectormangas.png' }
     ]
   },
