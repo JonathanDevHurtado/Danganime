@@ -1,0 +1,515 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+:root {
+  --bg-primary: #0f0f23;
+  --bg-secondary: #1a1a35;
+  --bg-card: #252547;
+  --accent-pink: #ff6b9d;
+  --accent-purple: #c44dff;
+  --accent-blue: #4d79ff;
+  --accent-cyan: #00d4ff;
+  --accent-green: #00ff88;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0c0;
+  --border-color: #333355;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* ============ SPLASH SCREEN ============ */
+.splash {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a35 50%, #252547 100%);
+  z-index: 1000;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.splash.fade-out {
+  opacity: 0;
+  transform: scale(1.1);
+  pointer-events: none;
+}
+
+.splash-logo-container {
+  width: 160px;
+  height: 160px;
+  margin-bottom: 24px;
+  border-radius: 50%;
+  overflow: hidden;
+  filter: drop-shadow(0 0 30px rgba(255, 107, 157, 0.4));
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.splash-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.splash-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--accent-pink), var(--accent-purple), var(--accent-cyan));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+  margin-bottom: 10px;
+}
+
+.splash-subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ============ BOUNCE ANIMATIONS ============ */
+.bounce-in {
+  animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.bounce-in-delay {
+  animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s forwards;
+  opacity: 0;
+}
+
+.bounce-in-delay2 {
+  animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.6s forwards;
+  opacity: 0;
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateY(40px);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05) translateY(-10px);
+  }
+  70% {
+    transform: scale(0.95) translateY(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ============ MAIN MENU ============ */
+.menu {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.menu.hidden {
+  display: none;
+}
+
+.menu-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px 25px;
+  background: rgba(26, 26, 53, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.menu-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: contain;
+  border: 2px solid var(--accent-pink);
+  box-shadow: 0 0 15px rgba(255, 107, 157, 0.3);
+}
+
+.menu-header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--accent-pink), var(--accent-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============ CARDS ============ */
+.cards-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 25px;
+  justify-content: center;
+}
+
+.card {
+  background: var(--bg-card);
+  border-radius: 20px;
+  padding: 25px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-pink), var(--accent-purple), var(--accent-cyan));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:active {
+  transform: scale(0.95) translateY(2px);
+  transition: transform 0.1s ease;
+}
+
+.card:hover::before,
+.card:active::before {
+  opacity: 1;
+}
+
+.card[data-category="anime"] {
+  border-left: 4px solid var(--accent-pink);
+}
+
+.card[data-category="manhwa"] {
+  border-left: 4px solid var(--accent-purple);
+}
+
+.card[data-category="manga"] {
+  border-left: 4px solid var(--accent-cyan);
+}
+
+.card[data-category="peliculas"] {
+  border-left: 4px solid var(--accent-green);
+}
+
+.card[data-category="novelas"] {
+  border-left: 4px solid #ffa726;
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.card h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+.card-sites {
+  font-size: 0.75rem;
+  color: var(--accent-cyan);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.bounce-card {
+  opacity: 0;
+  animation: bounceCard 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.bounce-card.delay-1 {
+  animation-delay: 0.15s;
+}
+
+.bounce-card.delay-2 {
+  animation-delay: 0.3s;
+}
+
+.bounce-card.delay-3 {
+  animation-delay: 0.45s;
+}
+
+.bounce-card.delay-4 {
+  animation-delay: 0.6s;
+}
+
+@keyframes bounceCard {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-8px) scale(1.02);
+  }
+  80% {
+    transform: translateY(3px) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ============ SITE SELECTOR ============ */
+.site-selector {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-primary);
+  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.site-selector.hidden {
+  display: none;
+  transform: translateX(100%);
+}
+
+.selector-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  background: rgba(26, 26, 53, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.selector-header h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  flex: 1;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: var(--accent-pink);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-btn:active {
+  background: rgba(255, 107, 157, 0.15);
+  transform: scale(0.9);
+}
+
+.site-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.site-item {
+  background: var(--bg-card);
+  border-radius: 15px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  border: 1px solid var(--border-color);
+  opacity: 0;
+  animation: slideInSite 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.site-item:nth-child(1) { animation-delay: 0.05s; }
+.site-item:nth-child(2) { animation-delay: 0.1s; }
+.site-item:nth-child(3) { animation-delay: 0.15s; }
+.site-item:nth-child(4) { animation-delay: 0.2s; }
+
+.site-item:active {
+  transform: scale(0.96);
+  background: var(--bg-secondary);
+}
+
+@keyframes slideInSite {
+  0% {
+    opacity: 0;
+    transform: translateX(30px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.site-item-inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.site-favicon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  flex-shrink: 0;
+  object-fit: contain;
+  padding: 4px;
+}
+
+.site-favicon-container {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.site-favicon-fallback {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.site-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.site-item-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.site-item-url {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.site-item-badge {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-anime {
+  background: rgba(255, 107, 157, 0.2);
+  color: var(--accent-pink);
+  border: 1px solid rgba(255, 107, 157, 0.3);
+}
+
+.badge-manhwa {
+  background: rgba(196, 77, 255, 0.2);
+  color: var(--accent-purple);
+  border: 1px solid rgba(196, 77, 255, 0.3);
+}
+
+.badge-manga {
+  background: rgba(0, 212, 255, 0.2);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.badge-peliculas {
+  background: rgba(255, 193, 7, 0.2);
+  color: #ffc107;
+  border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.badge-novelas {
+  background: rgba(255, 167, 38, 0.2);
+  color: #ffa726;
+  border: 1px solid rgba(255, 167, 38, 0.3);
+}
+
+/* ============ FOOTER ============ */
+.menu-footer {
+  text-align: center;
+  padding: 20px;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  border-top: 1px solid var(--border-color);
+}
+
+/* ============ SCROLLBAR ============ */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+/* ============ UTILITIES ============ */
+.hidden {
+  display: none !important;
+}

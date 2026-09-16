@@ -1,0 +1,40 @@
+# Dependencias
+node_modules/
+
+# Capacitor (generado por `npx cap sync`)
+android/app/src/main/assets/public/
+android/app/src/main/assets/capacitor.config.json
+android/app/src/main/assets/capacitor.plugins.json
+
+# Build de Android
+.gradle/
+build/
+.cxx/
+*.iml
+.idea/
+.kotlin/
+local.properties
+
+# APKs (excepción: se versionan los APK de release para descarga directa)
+*.apk
+*.aab
+*.ap_
+*.idsig
+!apks/*.apk
+
+# Firma / secretos
+*.jks
+*.keystore
+signing.properties
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+crashes/
+
+# Temporales
+*.tmp
+*.bak

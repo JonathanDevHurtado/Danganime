@@ -1,0 +1,20 @@
+{
+  "name": "danganime",
+  "version": "1.7.3",
+  "description": "App Android para ver anime, leer manhwas, mangas y novelas ligeras con bloqueo de anuncios",
+  "author": "Jonathan Hurtado (JonathanDevHurtado)",
+  "license": "MIT",
+  "scripts": {
+    "cap:sync": "npx cap sync android",
+    "cap:build": "cd android && ./gradlew assembleDebug",
+    "build": "echo 'Static app (www). Run: npm run cap:sync && npm run cap:build'"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/browser": "^6.0.0",
+    "@capacitor/core": "^6.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.0.0"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "appId": "com.danganime.app",
+  "appName": "Danganime",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "file"
+  },
+  "android": {
+    "allowMixedContent": true
+  }
+}
