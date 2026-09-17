@@ -286,5 +286,5 @@ Este proyecto está bajo la licencia **MIT**. Ver [`LICENSE`](LICENSE).
 ---
 
 <p align="center">
-  Hecho con HTML, CSS y Java, y pasión por el contenido sin anuncios
+  Hecho con HTML, CSS y Java, y pasión por el contenido sin anuncios y optimizado
 </p>
